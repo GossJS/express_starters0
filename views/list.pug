@@ -1,0 +1,11 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+  body
+    h1 Пример работы шаблонизатора
+    #container
+      p Список логинов:
+      ol
+        each item in items
+          li= item.login
