@@ -7,9 +7,7 @@ const URL = 'https://kodaktor.ru/j/users';
 const app = express();
 app
   .get(/hello/, r => r.res.end('Hello world!'))
-  .get(/users/, async r => {
-    r.res.render('list', { title: 'Список логинов', items });
-  })
+  .get(/users/, async r => r.res.render('list', { title: 'Список логинов', items }))
   .use(r => r.res.status(404).end('Still not here, sorry!'))
   .use((e, r, res, n) => res.status(500).end(`Error: ${e}`))
   .set('view engine', 'pug')
