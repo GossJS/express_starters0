@@ -1,10 +1,11 @@
 # express_starters0
 
-выполнение простой вводной лабораторной работы по сессиям, шаг 4
+выполнение простой вводной лабораторной работы по сессиям, шаг 5
 
-добавление обработки сессий и middleware 
+функция middleware для защиты маршрута
+		и защита маршрута этой функцией
 
-`mkdir $(date +%Y%m%d_%H%M%S) && cd $_ && git clone -b sess2 https://github.com/GossJS/express_starters0.git . && yarn`
+`mkdir $(date +%Y%m%d_%H%M%S) && cd $_ && git clone -b sess5 https://github.com/GossJS/express_starters0.git . && yarn`
 
 `atom .`
 

@@ -7,6 +7,13 @@ let items;
 const PORT = 4321;
 const URL = 'https://kodaktor.ru/j/users';
 const app = express();
+const checkAuth = (req, res, next) => {
+  if (req.session.auth === 'ok') {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+};
 app
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
@@ -27,7 +34,7 @@ app
       res.send('No such user!');
     }
   })
-  .get(/users/, async r => {
+  .get(/users/, checkAuth, async r => {
     r.res.render('list', { title: 'Список логинов', items });
   })
   .use(r => r.res.status(404).end('Still not here, sorry!'))
