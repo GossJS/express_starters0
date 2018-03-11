@@ -7,6 +7,7 @@ const URL = 'https://kodaktor.ru/j/users';
 const app = express();
 app
   .get(/hello/, r => r.res.end('Hello world!'))
+  .get('/login', r => r.res.render('login'))
   .get(/users/, async r => {
     r.res.render('list', { title: 'Список логинов', items });
   })
