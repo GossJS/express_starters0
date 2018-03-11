@@ -4,7 +4,7 @@
 
 добавление маршрута login и шаблона для ввода логина и пароля
 
-`mkdir $(date +%Y%m%d_%H%M%S) && cd $_ && git clone -b sess1 https://github.com/GossJS/express_starters0.git . && yarn`
+`mkdir $(date +%Y%m%d_%H%M%S) && cd $_ && git clone -b sess2 https://github.com/GossJS/express_starters0.git . && yarn`
 
 `atom .`
 
