@@ -4,6 +4,7 @@
 
 логаут и редирект на форму логина
 
+![alt scheme](logout.png "разница")
 
 `mkdir $(date +%Y%m%d_%H%M%S) && cd $_ && git clone -b sess6 https://github.com/GossJS/express_starters0.git . && yarn`
 
