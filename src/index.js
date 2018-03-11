@@ -7,8 +7,8 @@ let items;
 const PORT = 4321;
 const URL = 'https://kodaktor.ru/j/users';
 const app = express();
-const checkAuth = (req, res, next) => {
-  if (req.session.auth === 'ok') {
+const checkAuth = (r, res, next) => {
+  if (r.session.auth === 'ok') {
     next();
   } else {
     res.redirect('/login');
@@ -20,12 +20,12 @@ app
   .use(session({ secret: 'mysecret', resave: true, saveUninitialized: true }))
   .get(/hello/, r => r.res.end('Hello world!'))
   .get('/login', r => r.res.render('login'))
-  .post('/login/check/', (req, res) => {
-    const { body: { login: l } } = req;
+  .post('/login/check/', (r, res) => {
+    const { body: { login: l } } = r;
     const user = items.find(({ login }) => login === l);
     if (user) {
-      if (user.password === req.body.pass) {
-        req.session.auth = 'ok';
+      if (user.password === r.body.pass) {
+        r.session.auth = 'ok';
         res.send('Good!');
       } else {
         res.send('Wrong pass!');
