@@ -11,17 +11,17 @@ app
   .use(bodyParser.urlencoded({ extended: true }))
   .get(/hello/, r => r.res.end('Hello world!'))
   .get('/login', r => r.res.render('login'))
-  .post('/login/check/', (req, res) => {
-    const { body: { login: l } } = req;
+  .post('/login/check/', r => {
+    const { body: { login: l } } = r;
     const user = items.find(({ login }) => login === l);
     if (user) {
-      if (user.password === req.body.pass) {
-        res.send('Good!');
+      if (user.password === r.body.pass) {
+        r.res.send('Good!');
       } else {
-        res.send('Wrong pass!');
+        r.res.send('Wrong pass!');
       }
     } else {
-      res.send('No such user!');
+      r.res.send('No such user!');
     }
   })
   .get(/users/, async r => {
