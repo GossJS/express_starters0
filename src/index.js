@@ -20,23 +20,21 @@ app
   .use(session({ secret: 'mysecret', resave: true, saveUninitialized: true }))
   .get(/hello/, r => r.res.end('Hello world!'))
   .get('/login', r => r.res.render('login'))
-  .post('/login/check/', (r, res) => {
+  .post('/login/check/', r => {
     const { body: { login: l } } = r;
     const user = items.find(({ login }) => login === l);
     if (user) {
       if (user.password === r.body.pass) {
         r.session.auth = 'ok';
-        res.send('Good!');
+        r.res.send('Good!');
       } else {
-        res.send('Wrong pass!');
+        r.res.send('Wrong pass!');
       }
     } else {
-      res.send('No such user!');
+      r.res.send('No such user!');
     }
   })
-  .get(/users/, checkAuth, async r => {
-    r.res.render('list', { title: 'Список логинов', items });
-  })
+  .get(/users/, checkAuth, async r => r.res.render('list', { title: 'Список логинов', items }))
   .use(r => r.res.status(404).end('Still not here, sorry!'))
   .use((e, r, res, n) => res.status(500).end(`Error: ${e}`))
   .set('view engine', 'pug')
