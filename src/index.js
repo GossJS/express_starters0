@@ -1,6 +1,7 @@
 const express = require('express');
 const { get } = require('axios');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 
 let items;
 const PORT = 4321;
@@ -9,6 +10,7 @@ const app = express();
 app
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
+  .use(session({ secret: 'mysecret', resave: true, saveUninitialized: true }))
   .get(/hello/, r => r.res.end('Hello world!'))
   .get('/login', r => r.res.render('login'))
   .post('/login/check/', (req, res) => {
@@ -16,6 +18,7 @@ app
     const user = items.find(({ login }) => login === l);
     if (user) {
       if (user.password === req.body.pass) {
+        req.session.auth = 'ok';
         res.send('Good!');
       } else {
         res.send('Wrong pass!');
