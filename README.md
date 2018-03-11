@@ -7,6 +7,6 @@
 
 ---
 
-ветки sess1 и далее - для выполнения вводной (простой) лабораторной работы http://kodaktor.ru/pract-II-lab-t4-sess.pdf по сессиям
+ветки sess1 и далее - для выполнения вводной (простой) лабораторной работы http://kodaktor.ru/pract-II-lab-t4-sess.pdf по сессиям (см. также https://kodaktor.ru/g/lr_sessions)
 
 т.е. эти два задания (pug и sess) выполняются друг за другом
