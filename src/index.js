@@ -9,7 +9,7 @@ app
   .get(/hello/, r => r.res.end('Hello world!'))
   .get(/aprilusers/, async r => {
     const items = await User.find();
-    r.res.render('list', { title: 'Список логинов', items });
+    r.res.render('list', { title: 'Список монгологинов', items });
   })
   .get(/users/, async r => {
     const { data: { users: items } } = await get(URL);
